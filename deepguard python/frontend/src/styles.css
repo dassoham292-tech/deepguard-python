@@ -1,0 +1,288 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * DeepGuard design system — forensic console.
+ * Light = "lab paper", Dark = "night ops". All colors oklch.
+ */
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-safe: var(--safe);
+  --color-safe-foreground: var(--safe-foreground);
+  --color-warn: var(--warn);
+  --color-warn-foreground: var(--warn-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted: var(--panel-muted);
+  --color-grid: var(--grid);
+  --color-scan: var(--scan);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.972 0.006 190);
+  --foreground: oklch(0.21 0.03 230);
+  --card: oklch(0.995 0.003 190);
+  --card-foreground: oklch(0.21 0.03 230);
+  --popover: oklch(0.995 0.003 190);
+  --popover-foreground: oklch(0.21 0.03 230);
+  --primary: oklch(0.5 0.11 182);
+  --primary-foreground: oklch(0.985 0.01 180);
+  --secondary: oklch(0.93 0.012 195);
+  --secondary-foreground: oklch(0.25 0.03 230);
+  --muted: oklch(0.935 0.01 195);
+  --muted-foreground: oklch(0.48 0.025 225);
+  --accent: oklch(0.91 0.03 185);
+  --accent-foreground: oklch(0.25 0.05 200);
+  --destructive: oklch(0.55 0.21 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.87 0.015 200);
+  --input: oklch(0.87 0.015 200);
+  --ring: oklch(0.5 0.11 182);
+  --chart-1: oklch(0.5 0.11 182);
+  --chart-2: oklch(0.6 0.15 150);
+  --chart-3: oklch(0.68 0.15 75);
+  --chart-4: oklch(0.56 0.2 25);
+  --chart-5: oklch(0.5 0.12 240);
+  --sidebar: oklch(0.96 0.008 190);
+  --sidebar-foreground: oklch(0.21 0.03 230);
+  --sidebar-primary: oklch(0.5 0.11 182);
+  --sidebar-primary-foreground: oklch(0.985 0.01 180);
+  --sidebar-accent: oklch(0.92 0.02 190);
+  --sidebar-accent-foreground: oklch(0.25 0.03 230);
+  --sidebar-border: oklch(0.87 0.015 200);
+  --sidebar-ring: oklch(0.5 0.11 182);
+
+  --safe: oklch(0.56 0.14 155);
+  --safe-foreground: oklch(0.985 0.01 155);
+  --warn: oklch(0.68 0.15 70);
+  --warn-foreground: oklch(0.2 0.04 70);
+  --danger: oklch(0.55 0.21 25);
+  --danger-foreground: oklch(0.985 0.01 25);
+  --panel: oklch(0.2 0.025 230);
+  --grid: oklch(0.5 0.05 200 / 0.09);
+  --scan: oklch(0.5 0.11 182 / 0.5);
+
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 10px 30px -12px color-mix(in oklab, var(--primary) 35%, transparent);
+  --shadow-panel: 0 1px 0 0 color-mix(in oklab, var(--foreground) 6%, transparent),
+    0 12px 32px -18px color-mix(in oklab, var(--foreground) 30%, transparent);
+  --gradient-meter: linear-gradient(90deg, var(--safe), var(--warn) 50%, var(--danger));
+}
+
+.dark {
+  --background: oklch(0.155 0.018 235);
+  --foreground: oklch(0.94 0.012 190);
+  --card: oklch(0.195 0.022 235);
+  --card-foreground: oklch(0.94 0.012 190);
+  --popover: oklch(0.205 0.024 235);
+  --popover-foreground: oklch(0.94 0.012 190);
+  --primary: oklch(0.86 0.16 172);
+  --primary-foreground: oklch(0.18 0.03 200);
+  --secondary: oklch(0.25 0.025 235);
+  --secondary-foreground: oklch(0.92 0.012 190);
+  --muted: oklch(0.235 0.022 235);
+  --muted-foreground: oklch(0.68 0.025 210);
+  --accent: oklch(0.28 0.04 200);
+  --accent-foreground: oklch(0.93 0.03 175);
+  --destructive: oklch(0.66 0.21 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.32 0.025 225 / 0.8);
+  --input: oklch(0.32 0.025 225);
+  --ring: oklch(0.86 0.16 172);
+  --chart-1: oklch(0.86 0.16 172);
+  --chart-2: oklch(0.8 0.17 150);
+  --chart-3: oklch(0.83 0.15 80);
+  --chart-4: oklch(0.67 0.21 25);
+  --chart-5: oklch(0.72 0.12 240);
+  --sidebar: oklch(0.18 0.02 235);
+  --sidebar-foreground: oklch(0.94 0.012 190);
+  --sidebar-primary: oklch(0.86 0.16 172);
+  --sidebar-primary-foreground: oklch(0.18 0.03 200);
+  --sidebar-accent: oklch(0.25 0.025 235);
+  --sidebar-accent-foreground: oklch(0.94 0.012 190);
+  --sidebar-border: oklch(0.32 0.025 225);
+  --sidebar-ring: oklch(0.86 0.16 172);
+
+  --safe: oklch(0.8 0.17 155);
+  --safe-foreground: oklch(0.18 0.04 155);
+  --warn: oklch(0.83 0.15 80);
+  --warn-foreground: oklch(0.2 0.04 80);
+  --danger: oklch(0.67 0.21 25);
+  --danger-foreground: oklch(0.985 0.01 25);
+  --panel: oklch(0.12 0.015 235);
+  --grid: oklch(0.86 0.16 172 / 0.05);
+  --scan: oklch(0.86 0.16 172 / 0.55);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Faint forensic grid behind the app */
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility shadow-panel {
+  box-shadow: var(--shadow-panel);
+}
+
+@utility bg-meter {
+  background-image: var(--gradient-meter);
+}
+
+@utility label-caps {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Corner brackets for viewfinders */
+@utility viewfinder {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    z-index: 3;
+    border-color: var(--primary);
+  }
+  &::before {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  &::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+}
+
+/* Sweeping scan line used while a stream is being analyzed */
+@utility scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--scan), transparent);
+  box-shadow: 0 0 16px 2px var(--scan);
+  animation: scan-sweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan-sweep {
+  0% {
+    top: 4%;
+  }
+  50% {
+    top: 96%;
+  }
+  100% {
+    top: 4%;
+  }
+}
+
+@utility pulse-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
