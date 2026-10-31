@@ -79,9 +79,9 @@ Create a `.env` file in the `backend/` directory with your Google Gemini API key
 
 ```env
 GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-2.5-flash
-GEMINI_LIVE_MODEL=gemini-2.5-flash
-GEMINI_DEEP_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.6-flash
+GEMINI_LIVE_MODEL=gemini-3.6-flash
+GEMINI_DEEP_MODEL=gemini-3.6-flash
 ```
 
 You can also configure frontend origins if needed:
