@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 load_dotenv()  # <-- Add this right here
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-LIVE_MODEL = os.getenv("GEMINI_LIVE_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.6-flash"
-DEEP_MODEL = os.getenv("GEMINI_DEEP_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.6-flash"
+LIVE_MODEL = os.getenv("GEMINI_LIVE_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
+DEEP_MODEL = os.getenv("GEMINI_DEEP_MODEL") or os.getenv("GEMINI_MODEL") or "gemini-3.8-flash"
 
 SHARED_RULES = """
 Be calibrated and evidence-driven. Ordinary, natural footage or speech of a real person should score LOW (0-25).
@@ -71,7 +71,7 @@ async def run_forensic_model(model: str, system_prompt: str, parts: List[Dict[st
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY environment variable is not set")
 
-    clean_model = model.replace("google/", "").replace("models/", "") or "gemini-3.6-flash"
+    clean_model = model.replace("google/", "").replace("models/", "") or "gemini-3.8-flash"
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model}:generateContent"
 
     payload = {
